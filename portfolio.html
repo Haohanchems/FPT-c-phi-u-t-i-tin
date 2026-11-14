@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your virtual cash, FPT positions, profit and loss, and order history.">
+  <title>Portfolio – FPT Stock Simulator</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/ui.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/portfolio.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">&#9650;</span>FPT Stock Simulator</a>
+      <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" title="Dark mode"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+      <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu" title="Menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="trade.html">Trade</a></li>
+        <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Your portfolio</h1>
+    <p class="ticker"><span class="sym">FPT</span> <span class="price" data-bind="price">100,000</span> <span class="small">VND</span> <span class="chg" data-bind="change">&#9632; 0.00%</span></p>
+
+    <section aria-labelledby="sum-h">
+      <h2 id="sum-h">Account summary</h2>
+      <dl class="stats">
+        <div class="stat"><dt>Cash</dt><dd data-bind="cash">1,000,000,000 VND</dd></div>
+        <div class="stat"><dt>Total equity</dt><dd data-bind="equity">1,000,000,000 VND</dd></div>
+        <div class="stat"><dt>Unrealized P&amp;L</dt><dd data-bind="unrealized">0 VND</dd></div>
+        <div class="stat"><dt>Realized P&amp;L</dt><dd data-bind="realized">0 VND</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="pos-h">
+      <h2 id="pos-h">Positions</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>FPT positions (VND)</caption>
+          <thead>
+            <tr><th scope="col">Position</th><th scope="col">Shares</th><th scope="col">Avg price</th><th scope="col">Market value</th><th scope="col">P&amp;L</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Long</th><td data-bind="long-qty">0</td><td data-bind="long-avg">0</td><td data-bind="long-value">0</td><td data-bind="long-pnl">0</td></tr>
+            <tr><th scope="row">Short</th><td data-bind="short-qty">0</td><td data-bind="short-avg">0</td><td data-bind="short-value">0</td><td data-bind="short-pnl">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="hist-h">
+      <h2 id="hist-h">Order history</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Your last 50 orders</caption>
+          <thead><tr><th scope="col">Time</th><th scope="col">Type</th><th scope="col">Qty</th><th scope="col">Price</th><th scope="col">Fee</th></tr></thead>
+          <tbody data-orders data-limit="50"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="reset-h">
+      <h2 id="reset-h">Start over</h2>
+      <p>Reset your virtual account back to 1,000,000,000 VND and clear all positions and orders.</p>
+      <button id="reset-btn" class="btn btn-ghost" type="button">Reset account</button>
+      <p id="reset-msg" class="msg" role="status"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Simulation only &ndash; virtual money, not investment advice.</strong> Prices on this site are randomly generated and are not real market data. This is a student project and is not affiliated with FPT Corporation.</p>
+    <p><a href="#top">Jump to the top</a></p>
+  </footer>
+</body>
+
+</html>

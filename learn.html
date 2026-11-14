@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How buying, selling and short selling work, the risks of short selling, and a profit calculator.">
+  <title>Learn – FPT Stock Simulator</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/ui.js"></script>
+  <script src="js/learn.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">&#9650;</span>FPT Stock Simulator</a>
+      <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" title="Dark mode"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+      <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu" title="Menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="trade.html">Trade</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="learn.html" aria-current="page">Learn</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Learn the basics</h1>
+    <p class="lead">Four short ideas explain everything you can do in this simulator.</p>
+
+    <section aria-labelledby="buy-h">
+      <h2 id="buy-h">Buying (going long)</h2>
+      <p>When you buy a share you own a small piece of the company. If the price goes up you can sell it for more than you paid. If the price goes down you lose the difference. The most you can lose is the money you paid.</p>
+    </section>
+
+    <section aria-labelledby="sell-h">
+      <h2 id="sell-h">Selling</h2>
+      <p>Selling closes a position you own. The gain or loss becomes &ldquo;realized&rdquo; at that moment. Until then it is only an &ldquo;unrealized&rdquo; number that changes with the price.</p>
+    </section>
+
+    <section id="short" aria-labelledby="short-h">
+      <h2 id="short-h">Short selling</h2>
+      <p>A short seller borrows shares, sells them now, and hopes to buy them back later at a lower price. The difference is the profit. In this simulator, <strong>Short</strong> opens that bet and <strong>Cover</strong> closes it by buying the shares back.</p>
+      <div class="notice">
+        <h3>Why short selling is riskier</h3>
+        <p>A share can fall only to zero, so a short seller&rsquo;s gain is limited. A share can rise without limit, so a short seller&rsquo;s loss is not limited. In Vietnam, short selling by individual investors is restricted, so this page is for learning only. Check the current rules and talk to a licensed securities broker before trading real money.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="calc-h">
+      <h2 id="calc-h">Long vs short calculator</h2>
+      <p>Change the numbers and see how the same price move affects someone who bought and someone who shorted.</p>
+      <form id="calc-form" class="card" novalidate>
+        <div class="calc-grid">
+          <div class="field">
+            <label for="entry">Entry price (VND)</label>
+            <input type="number" id="entry" name="entry" min="1000" step="100" value="100000">
+          </div>
+          <div class="field">
+            <label for="shares">Shares</label>
+            <input type="number" id="shares" name="shares" min="100" step="100" value="1000">
+          </div>
+          <div class="field">
+            <label for="exit">Price later</label>
+            <input type="range" id="exit" name="exit" min="10000" max="300000" step="1000" value="120000">
+            <output id="exit-out" for="exit">120,000 VND</output>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <caption>Result before fees</caption>
+            <thead><tr><th scope="col">Position</th><th scope="col">Profit / loss</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Bought (long)</th><td id="long-result">&nbsp;</td></tr>
+              <tr><th scope="row">Short sold</th><td id="short-result">&nbsp;</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="calc-note" class="small" role="status"></p>
+      </form>
+    </section>
+
+    <section aria-labelledby="faq-h">
+      <h2 id="faq-h">Quick answers</h2>
+      <details>
+        <summary>Are the prices real?</summary>
+        <p>No. Prices are generated randomly in your browser every two seconds. They show how a price can move, not what FPT shares are really worth.</p>
+      </details>
+      <details>
+        <summary>What is a lot?</summary>
+        <p>A lot is a standard order size. Here every order must be a multiple of 100 shares.</p>
+      </details>
+      <details>
+        <summary>Where is my account saved?</summary>
+        <p>In your own browser, using local storage. It stays on your device and you can reset it on the Portfolio page.</p>
+      </details>
+      <details>
+        <summary>What are P&amp;L and equity?</summary>
+        <p>P&amp;L means profit and loss. Equity is your cash plus the value of shares you own, minus the value of shares you owe back.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Simulation only &ndash; virtual money, not investment advice.</strong> Prices on this site are randomly generated and are not real market data. This is a student project and is not affiliated with FPT Corporation.</p>
+    <p><a href="#top">Jump to the top</a></p>
+  </footer>
+</body>
+
+</html>

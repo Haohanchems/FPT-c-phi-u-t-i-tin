@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice buying, selling and short selling simulated FPT shares with virtual money.">
+  <title>FPT Stock Simulator – Practice trading with virtual money</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/ui.js"></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">&#9650;</span>FPT Stock Simulator</a>
+      <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" title="Dark mode"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+      <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu" title="Menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="trade.html">Trade</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="hero-text">
+        <p class="eyebrow">Virtual money &middot; Real lessons</p>
+        <h1 id="hero-h">Practice trading FPT stock without risking a dong</h1>
+        <p class="lead">Buy, sell and short sell simulated FPT shares with 1,000,000,000 VND of virtual cash. Watch the price move live, place orders, and see exactly how your profit and loss add up.</p>
+        <p class="actions">
+          <a class="btn btn-primary" href="trade.html">Start trading</a>
+          <a class="btn btn-ghost" href="learn.html">Learn the basics</a>
+        </p>
+      </div>
+      <div class="card hero-panel">
+        <p class="ticker"><span class="sym">FPT</span> <span class="price" data-bind="price">100,000</span> <span class="small">VND</span> <span class="chg" data-bind="change">&#9632; 0.00%</span></p>
+        <svg id="chart" class="chart" viewBox="0 0 600 220" role="img" aria-label="Simulated FPT price chart"></svg>
+        <p class="chart-range"><span data-bind="low">Low</span><span data-bind="high">High</span></p>
+        <p class="small">Simulated price in VND, updated every 2 seconds.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="actions-h">
+      <h2 id="actions-h">What you can do</h2>
+      <div class="cards">
+        <article class="card">
+          <svg class="action-icon" viewBox="0 0 60 60" aria-hidden="true" focusable="false"><circle class="ic-bg" cx="30" cy="30" r="28"/><path class="ic-fg" d="M18 36 L28 24 L34 30 L42 18"/><path class="ic-fg" d="M34 18 H42 V26"/></svg>
+          <h3>Buy</h3>
+          <p>Buy shares when you think the price will rise. You profit if you later sell for more than you paid.</p>
+          <a href="trade.html">Place a buy order</a>
+        </article>
+        <article class="card">
+          <svg class="action-icon" viewBox="0 0 60 60" aria-hidden="true" focusable="false"><circle class="ic-bg" cx="30" cy="30" r="28"/><path class="ic-fg" d="M18 20 L28 32 L34 26 L42 38"/><path class="ic-fg" d="M34 38 H42 V30"/></svg>
+          <h3>Sell</h3>
+          <p>Sell shares you own to lock in a gain or cut a loss. Your cash and portfolio update instantly.</p>
+          <a href="portfolio.html">See your portfolio</a>
+        </article>
+        <article class="card">
+          <svg class="action-icon" viewBox="0 0 60 60" aria-hidden="true" focusable="false"><circle class="ic-bg" cx="30" cy="30" r="28"/><path class="ic-fg" d="M16 18 H30 M16 28 H30 M16 38 H30"/><path class="ic-fg" d="M38 16 V38 M31 31 L38 38 L45 31"/></svg>
+          <h3>Short sell</h3>
+          <p>Short selling bets that the price will fall. It is the riskiest move here, so practice it with virtual money first.</p>
+          <a href="learn.html#short">How short selling works</a>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="how-h">
+      <h2 id="how-h">How it works</h2>
+      <ol class="steps">
+        <li>Open the <a href="trade.html">Trade</a> page and choose Buy, Sell, Short or Cover.</li>
+        <li>Enter a quantity in lots of 100 shares and place your virtual order at the current price.</li>
+        <li>Track cash, positions and profit on the <a href="portfolio.html">Portfolio</a> page. Your account is saved in your browser.</li>
+      </ol>
+    </section>
+
+    <aside class="notice" aria-labelledby="risk-h">
+      <h2 id="risk-h">Know the risks</h2>
+      <p>Real trading can lose money, and short selling can lose more than you invest. Nothing on this site is advice. Read the <a href="learn.html">Learn</a> page before you ever trade with real money.</p>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Simulation only &ndash; virtual money, not investment advice.</strong> Prices on this site are randomly generated and are not real market data. This is a student project and is not affiliated with FPT Corporation.</p>
+    <p><a href="#top">Jump to the top</a></p>
+  </footer>
+</body>
+
+</html>

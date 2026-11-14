@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Place virtual buy, sell, short and cover orders for FPT shares.">
+  <title>Trade FPT – FPT Stock Simulator</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/ui.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/trade.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">&#9650;</span>FPT Stock Simulator</a>
+      <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" title="Dark mode"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+      <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu" title="Menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="trade.html" aria-current="page">Trade</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Trade FPT</h1>
+    <p class="ticker"><span class="sym">FPT</span> <span class="price" data-bind="price">100,000</span> <span class="small">VND</span> <span class="chg" data-bind="change">&#9632; 0.00%</span></p>
+
+    <div class="trade-layout">
+      <section class="card trade-chart" aria-labelledby="chart-h">
+        <h2 id="chart-h">Price chart</h2>
+        <svg id="chart" class="chart" viewBox="0 0 600 220" role="img" aria-label="Simulated FPT price chart"></svg>
+        <p class="chart-range"><span data-bind="low">Low</span><span data-bind="high">High</span></p>
+      </section>
+
+      <section class="card ticket" aria-labelledby="ticket-h">
+        <h2 id="ticket-h">Order ticket</h2>
+        <p class="summary-line">Cash <strong data-bind="cash">1,000,000,000 VND</strong><br>
+          Long <strong data-bind="long-qty">0</strong> shares &middot; Short <strong data-bind="short-qty">0</strong> shares</p>
+        <form id="order-form" novalidate>
+          <fieldset class="segmented">
+            <legend>Order type</legend>
+            <input type="radio" name="side" id="side-buy" value="buy" checked>
+            <label for="side-buy">Buy</label>
+            <input type="radio" name="side" id="side-sell" value="sell">
+            <label for="side-sell">Sell</label>
+            <input type="radio" name="side" id="side-short" value="short">
+            <label for="side-short">Short</label>
+            <input type="radio" name="side" id="side-cover" value="cover">
+            <label for="side-cover">Cover</label>
+          </fieldset>
+
+          <div class="field">
+            <label for="price-field">Price (VND, market)</label>
+            <input type="text" id="price-field" name="price" value="Market price" readonly>
+          </div>
+
+          <div class="field">
+            <label for="qty">Quantity (shares, multiples of 100)</label>
+            <input type="number" id="qty" name="qty" min="100" step="100" value="100" inputmode="numeric" required>
+          </div>
+
+          <p class="total-row"><span id="est-label">You pay (incl. fee)</span> <output id="est-total" for="qty">0 VND</output></p>
+
+          <button class="btn btn-primary btn-block" type="submit">Place virtual order</button>
+          <p id="order-msg" class="msg" role="status"></p>
+        </form>
+        <p class="small">Short = sell shares you do not own, hoping to buy them back cheaper. Cover = buy back shares you are short. A 0.15% fee applies to every order.</p>
+      </section>
+
+      <section class="card trade-book" aria-labelledby="book-h">
+        <h2 id="book-h">Order book and recent orders</h2>
+        <div class="table-wrap">
+          <table>
+            <caption>Simulated order book</caption>
+            <thead><tr><th scope="col">Side</th><th scope="col">Price</th><th scope="col">Qty</th><th scope="col">Total</th></tr></thead>
+            <tbody id="book-body"></tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <caption>Your last 5 orders</caption>
+            <thead><tr><th scope="col">Time</th><th scope="col">Type</th><th scope="col">Qty</th><th scope="col">Price</th><th scope="col">Fee</th></tr></thead>
+            <tbody data-orders data-limit="5"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Simulation only &ndash; virtual money, not investment advice.</strong> Prices on this site are randomly generated and are not real market data. This is a student project and is not affiliated with FPT Corporation.</p>
+    <p><a href="#top">Jump to the top</a></p>
+  </footer>
+</body>
+
+</html>
